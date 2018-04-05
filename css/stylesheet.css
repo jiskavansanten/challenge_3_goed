@@ -2,10 +2,19 @@
        * element that contains the map. */
       #map-canvas {
         height: 80%;
+        width: 80%;
+        margin: 0 auto;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
+        background-color: black;
+        font-family: arial;
+      }
+
+      h1{
+        color: white;
+        margin-left: 10%;
       }
