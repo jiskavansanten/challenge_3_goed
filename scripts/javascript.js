@@ -12,12 +12,13 @@
 
       function initialize() {
       var myLatLng = {lat: 52.070136, lng: 4.32233};
+      
       var mapOptions = {
       zoom: 4,
       center: new google.maps.LatLng(52.070136, 4.32233)
     };
 
-    
+    //geeft de google maps map aan en toont aan hoe die komt te staan
 
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
@@ -44,11 +45,35 @@
       infowindow.open(map);
     });
 
+    //toont de marker aan
+
     var marker = new google.maps.Marker({
     position: myLatLng,
     map: map,
     title: 'Best landing spot'
   });
+
+    // dit zou een placeId moeten aangeven, dat doet die alleen niet
+
+    var infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+
+    service.getDetails({
+          placeId: 'Place ID ChIJW6mIyR-3xUcRiLEOF01bRlQ'
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+            });
+          }
+        });
   }
   var checkIfDataRequested = function() {
     // Stop extra requests being sent
