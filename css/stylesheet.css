@@ -1,5 +1,17 @@
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+     
+       .gridcontainer{
+        display: grid;
+        grid-template-areas: 
+          "box1"
+          "box2"
+        ;
+       }
+
+       
+
+
       #map-canvas {
         height: 80%;
         width: 94%;

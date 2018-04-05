@@ -11,10 +11,14 @@
       <!-- tot hier -->
 
       function initialize() {
+      var myLatLng = {lat: 52.070136, lng: 4.32233};
       var mapOptions = {
-      zoom: 6,
+      zoom: 4,
       center: new google.maps.LatLng(52.070136, 4.32233)
     };
+
+    
+
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
     // Add interaction listeners to make weather requests
@@ -39,6 +43,12 @@
         });
       infowindow.open(map);
     });
+
+    var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
   }
   var checkIfDataRequested = function() {
     // Stop extra requests being sent
